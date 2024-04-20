@@ -17,6 +17,7 @@ export async function GET(request) {
     throw new Error("Failed to fetch data");
   const data = await response.json();
   // console.log(response.json().chart.result[0].indicators);
+  console.log("Stock api called");
   return Response.json(data);
   // const getStock = (json) => {
   //   let prices = [];

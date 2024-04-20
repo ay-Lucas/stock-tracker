@@ -1,6 +1,10 @@
 import { Inter } from "next/font/google";
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 import "./globals.css";
-
+import { TopNav } from "./_components/topnav";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -10,8 +14,13 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
+    // <body className="bg-gradient-to-b from-gray-900 to-slate-950 text-stone-50">
+    // <body className="bg-gradient-to-b from-emerald-500 to-emerald-900">
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className="bg-gradient-to-b from-zinc-950 to-black backdrop-blur-lg">
+        <TopNav />
+        <main className={inter.className}>{children}</main>
+      </body>
     </html>
   );
 }

@@ -28,18 +28,24 @@ export default async function Home() {
   const range = "5d";
   const interval = "1d";
   console.log(process.env.REACT_APP_URL);
-  // const request = await fetch(`${process.env.REACT_APP_URL}/api/search/${ticker}?range=${range}&interval=${interval}`);
-  // const data = await request.json();
+  console.log(`${process.env.REACT_APP_URL}/api/search?&ticker=${ticker}&range=${range}&interval=${interval}`)
+  const request = await fetch(`${process.env.REACT_APP_URL}/api/search?&ticker=${ticker}&range=${range}&interval=${interval}`);
+  if (!request.ok)
+    throw new Error("Fetch failed")
+  const data = await request.json();
 
-
-  // const stock = getStock(data);
+  const stock = getStock(data);
   // for (let i = 0; i < stock.length; i++) {
   //   console.log(stock[i]);
   // }
-  // console.log(data.chart.result[0].indicators);
+  // console.log(stock.chart.result[0].indicators);
   return (
-
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col items-center justify-between p-24 ">
+      <div>
+        {/* stock.map((item, index) =>
+          (<div key={index}>{item.price}</div>)
+        )*/}
+      </div>
     </main>
   );
 }
